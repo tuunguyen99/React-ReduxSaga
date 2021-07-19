@@ -3,13 +3,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    mode: "development",
-    entry: './src/index.js',
+    entry: {
+        app: './src/index.js'
+    },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     }
     ,
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     module: {
         rules: [
             {
@@ -31,7 +37,9 @@ module.exports = {
             template: "./src/index.html"
         })
     ],
-    devServer:{
-        contentBase:'./dist'
+    resolve: {
+        alias: {
+        src: Path.resolve(__dirname, '../src')
+        }
     }
 }
