@@ -28,7 +28,27 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
-            }
+            },
+            {
+                test: /\.less$/i,
+                use: [
+                  // compiles Less to CSS
+                  "style-loader",
+                  "css-loader",
+                  "less-loader",
+                ],
+              },
+              {
+                test: /\.(png|jpg|gif|svg)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: 'images/[name].[ext]',
+                    },
+                  },
+                ],
+              },
         ]
     },
     plugins: [
@@ -39,7 +59,7 @@ module.exports = {
     ],
     resolve: {
         alias: {
-        src: Path.resolve(__dirname, '../src')
+        src: path.resolve(__dirname, '../src')
         }
     }
 }
