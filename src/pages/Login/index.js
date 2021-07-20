@@ -3,7 +3,9 @@ import LoginForm from "./Form";
 import { Card, message } from "antd";
 import "./index.less";
 import backgroundImage from "src/assets/background.jpg";
-import logoImage from '../../assets/react.svg'
+import logoImage from '../../assets/react.svg';
+import LoginWithFB from "./LoginWithFB";
+
 const PageLogin = (props) => {
   return (
     <div
@@ -23,6 +25,7 @@ const PageLogin = (props) => {
         </div>
         <LoginForm />
       </Card>
+      <LoginWithFB/>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
 
+
 const LoginForm = (props) => {
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -9,6 +10,7 @@ const LoginForm = (props) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+ 
   return (
     <div>
       <Form
@@ -50,7 +52,7 @@ const LoginForm = (props) => {
       <br/>
       <br/>
       <a style={{ float: "left" }} href="">
-        Đăng nhập với facebook
+        Đăng ký tài khoản mới
       </a>
       <a style={{ float: "right" }} href="">
         Quên mật khẩu
