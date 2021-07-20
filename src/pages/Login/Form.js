@@ -20,15 +20,14 @@ const LoginForm = (props) => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Username"
+          label="Tài khoản"
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input />
         </Form.Item>
-
         <Form.Item
-          label="Password"
+          label="Mật khẩu"
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
@@ -37,9 +36,9 @@ const LoginForm = (props) => {
         <Form.Item
           name="remember"
           valuePropName="checked"
-          style={{ float: "left",whiteSpace:"nowrap"}}
+          style={{ float: "left", whiteSpace: "nowrap" }}
         >
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>Nhớ mật khẩu</Checkbox>
         </Form.Item>
         <Form.Item style={{ float: "right" }}>
           <Button type="primary" htmlType="submit">
@@ -47,6 +46,15 @@ const LoginForm = (props) => {
           </Button>
         </Form.Item>
       </Form>
+      <br/>
+      <br/>
+      <br/>
+      <a style={{ float: "left" }} href="">
+        Đăng nhập với facebook
+      </a>
+      <a style={{ float: "right" }} href="">
+        Quên mật khẩu
+      </a>
     </div>
   );
 };

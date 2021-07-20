@@ -19,7 +19,7 @@ const PageLogin = (props) => {
         <div className="header">
           <img src={logoImage} height="48px" alt="React Starter" />
           <h1>React App</h1>
-       
+          <h2>Đăng nhập</h2>
         </div>
         <LoginForm />
       </Card>
