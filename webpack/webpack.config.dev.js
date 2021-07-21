@@ -8,6 +8,7 @@ module.exports = merge(common,{
     devtool: 'inline-source-map',
     devServer: {
         inline: true,
+        historyApiFallback: true
       },
     plugins: [
         new Webpack.DefinePlugin({

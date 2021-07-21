@@ -15,9 +15,10 @@ export const MyRoutes = () => {
   return (
     <div>
       <Switch>
+        <Route exact path="/login" component={PageLogin} />
         <PrivateRoute exact path="/" component={HomePage} />
-        <Route path="/login" component={PageLogin} />
         <Redirect from="*" to="/" />
+        <Route component={PageNotFound} />
       </Switch>
     </div>
   );
