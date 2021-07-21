@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --open --hot --config webpack/webpack.config.dev.js",
+    "start": "webpack serve --open --hot --https --config webpack/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^4.16.8",
+    "axios": "^0.21.1",
     "file-loader": "^6.2.0",
     "history": "^4.10.1",
     "less": "^4.1.1",
@@ -24,6 +25,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
+    "rxjs": "^7.2.0",
     "webpack-merge": "^5.8.0"
   },
   "devDependencies": {

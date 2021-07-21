@@ -1,10 +1,11 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
-
+import { apiLoginPass } from "src/apis";
 
 const LoginForm = (props) => {
   const onFinish = (values) => {
     console.log("Success:", values);
+    apiLoginPass(values.username,values.password);
   };
 
   const onFinishFailed = (errorInfo) => {

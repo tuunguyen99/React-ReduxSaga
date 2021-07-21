@@ -1,11 +1,10 @@
 import React from "react";
 
 const LoginWithFB = (props) => {
-  
   return (
-    <div align='center' style={{marginTop:'20px'}}>
+    <div align="center" style={{ marginTop: "20px" }}>
       <div
-        class="fb-login-button"
+        className="fb-login-button"
         data-width=""
         data-size="large"
         data-button-type="continue_with"
