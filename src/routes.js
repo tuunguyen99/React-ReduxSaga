@@ -8,7 +8,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import { PrivateRoute } from "src/components";
-import { HomePage, PageLogin, PageNotFound } from "./pages";
+import { HomePage, PageLogin, PageNotFound,ListProduct,HandleFormPage } from "./pages";
+
 export const MyRoutes = () => {
   const pathname = useLocation().pathname || "";
 
@@ -16,7 +17,8 @@ export const MyRoutes = () => {
     <div>
       <Switch>
         <Route exact path="/login" component={PageLogin} />
-        <PrivateRoute exact path="/" component={HomePage} />
+        <PrivateRoute exact path="/" component={ListProduct} />
+        <PrivateRoute exact path="/product/:id" component={HandleFormPage} />
         <Redirect from="*" to="/" />
         <Route component={PageNotFound} />
       </Switch>
