@@ -11,18 +11,18 @@ const HandleFormPage = () => {
   const dispatch = useDispatch();
   var history = useHistory();
   const [submited, setSubmited] = useState(false);
-  const initialValues = l.find((item) => item.id === parseInt(editID));
+  const initialValues = l.find((item) => item.id === editID);
   const submit = (values) => {
     if (editID === "add") {
         dispatch(
           addProduct({
             ...values,
-            id: l[l.length - 1] ? l[l.length - 1].id + 1 : 1,
+            id: l[l.length - 1] ? parseInt(l[l.length - 1].id) + 1 : 1,
           })
         );
     } else {
       dispatch(
-        editProduct({ ...values, id: parseInt(editID) }, parseInt(editID))
+        editProduct({ ...values, id: editID }, parseInt(editID))
       );
     }
     // print the form values to the console

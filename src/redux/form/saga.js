@@ -16,42 +16,52 @@ function* ListProductFlow(action) {
   try {
     const res = yield call(apiListProduct);
     yield put({ type: PRODUCT_SAGA_TYPES.LIST_PRODUCT_SUCCESS, res });
-  } catch {
-    yield put({ type: PRODUCT_SAGA_TYPES.LIST_PRODUCT_ERROR, res });
+  } catch (err) {
+    console.log(err);
+    yield put({ type: PRODUCT_SAGA_TYPES.LIST_PRODUCT_ERROR });
   }
 }
 
 function* AddProductFlow(action) {
   try {
-    const res = yield call(apiCreateProduct,action.item);
+    const res = yield call(apiCreateProduct, action.item);
     yield put({ type: PRODUCT_SAGA_TYPES.CREATE_PRODUCT_SUCCESS, res });
   } catch {
-    yield put({ type: PRODUCT_SAGA_TYPES.CREATE_PRODUCT_ERROR, res });
+    yield put({ type: PRODUCT_SAGA_TYPES.CREATE_PRODUCT_ERROR });
   }
 }
 
 function* EditProductFlow(action) {
   try {
-    const res = yield call(apiEditProduct(action.item));
-    yield put({ type: PRODUCT_SAGA_TYPES.EDIT_PRODUCT_SUCCESS, res });
+    const res = yield call(apiEditProduct, action.item);
+    const editItem = action.item;
+    yield put({ type: PRODUCT_SAGA_TYPES.EDIT_PRODUCT_SUCCESS, editItem });
   } catch {
-    yield put({ type: PRODUCT_SAGA_TYPES.EDIT_PRODUCT_ERROR, res });
+    yield put({ type: PRODUCT_SAGA_TYPES.EDIT_PRODUCT_ERROR });
   }
 }
 
 function* DeleteProductFlow(action) {
   try {
-    const res = yield call(apiDelProduct(action.index));
+    const res = yield call(apiDelProduct,action.index);
     yield put({ type: PRODUCT_SAGA_TYPES.DELETE_PRODUCT_SUCCESS, res });
   } catch {
-    yield put({ type: PRODUCT_SAGA_TYPES.DELETE_PRODUCT_ERROR, res });
+    yield put({ type: PRODUCT_SAGA_TYPES.DELETE_PRODUCT_ERROR });
   }
 }
 
-function* productWatcher() {
-  yield takeEvery(LIST_PRODUCT_ADD,AddProductFlow);
-//   yield takeEvery(LIST_PRODUCT_EDIT,EditProductFlow);
-//   yield takeEvery(LIST_PRODUCT_DEL,DeleteProductFlow)
+export function* addProductWatcher() {
+  yield takeEvery(LIST_PRODUCT_ADD, AddProductFlow);
 }
 
-export default productWatcher;
+export function* listProductWatcher() {
+  yield takeEvery(PRODUCT_SAGA_TYPES.LIST_PRODUCT_REQUEST, ListProductFlow);
+}
+
+export function* editProductWatcher() {
+  yield takeEvery(LIST_PRODUCT_EDIT, EditProductFlow);
+}
+
+export function* deleteProductWatcher(){
+  yield takeEvery(LIST_PRODUCT_DEL,DeleteProductFlow)
+}

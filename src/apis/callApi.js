@@ -36,9 +36,11 @@ export const apiLoginFB = (token) => {
 };
 
 export const apiListProduct = () => {
-  axios
+  return axios
     .get(URL_GET_LIST_PRODUCT)
-    .then((res) => res.data)
+    .then((res) =>{
+      return res.data.status === 200?res.data.items:"fail"
+    } )
     .catch((err) => err);
 };
 
@@ -60,9 +62,10 @@ export const apiEditProduct = (item) => {
       id: item.id,
       name: item.name,
       price: item.price,
-      detail: item.detail,
+      detail: item.about,
     })
-    .then((res) => res.data)
+    .then((res) => {
+      return res.data.status === 200? res.data.result:"fail"})
     .catch((err) => err);
 };
 

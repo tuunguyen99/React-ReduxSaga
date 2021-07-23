@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Table, Button, Modal,Card } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { delProduct } from "src/redux/form/action";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { PRODUCT_SAGA_TYPES } from "src/constants";
 const columns = [
   {
     title: "Tên sản phẩm",
@@ -31,14 +32,17 @@ const { confirm } = Modal;
 const ListProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  useEffect(() => {
+    dispatch({type:PRODUCT_SAGA_TYPES.LIST_PRODUCT_REQUEST})
+  },[])
   const productList = useSelector((state) => state.listProduct);
-  const data = productList.map((item, index) => {
+  const data = productList?productList.map((item, index) => {
     return {
       key: index,
       id: item.id,
       name: item.name,
       price: `${item.price} VNĐ`,
-      detail: item.about,
+      detail: item.detail,
       edit: (
         <Button
           onClick={() => {
@@ -51,7 +55,7 @@ const ListProduct = () => {
       ),
       delete: <Button onClick={() => showConfirm(item)}> Delete </Button>,
     };
-  });
+  }):[];
   function showConfirm(item) {
     confirm({
       title: "Bạn chắc chắc muốn xoá?",

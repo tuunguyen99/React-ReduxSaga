@@ -18,7 +18,7 @@ const HandleForm = (props) => {
       form.setFieldsValue({
         name: initialValues.name,
         price: initialValues.price,
-        about: initialValues.about,
+        about: initialValues.detail,
       });
     }
   }, []);
