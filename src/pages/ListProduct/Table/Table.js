@@ -32,7 +32,6 @@ const ListProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const productList = useSelector((state) => state.listProduct);
-  console.log(productList);
   const data = productList.map((item, index) => {
     return {
       key: index,

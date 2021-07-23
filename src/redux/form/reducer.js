@@ -8,10 +8,10 @@ const initialState = [];
 
 export default function listproduct(state = initialState, action) {
   switch (action.type) {
-    case LIST_PRODUCT_ADD:
-      return [ ...state,action.item];
+    // case LIST_PRODUCT_ADD:
+    //   return [...state, action.item];
     case LIST_PRODUCT_EDIT:
-      return state.map((stateItem, stateIndex) => {
+      return state.map((stateItem) => {
         if (stateItem.id === action.index) {
           return action.item;
         } else {
@@ -19,8 +19,9 @@ export default function listproduct(state = initialState, action) {
         }
       });
     case LIST_PRODUCT_DEL:
-        return state.filter((item) => item.id !== action.index);
+      return state.filter((item) => item.id !== action.index);
     default:
+      console.log(action)
       return state;
   }
 }

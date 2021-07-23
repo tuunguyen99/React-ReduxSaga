@@ -14,14 +14,16 @@ const HandleFormPage = () => {
   const initialValues = l.find((item) => item.id === parseInt(editID));
   const submit = (values) => {
     if (editID === "add") {
-      dispatch(
-        addProduct({
-          ...values,
-          id: l[l.length - 1] ? l[l.length - 1].id + 1 : 1,
-        },)
-      );
+        dispatch(
+          addProduct({
+            ...values,
+            id: l[l.length - 1] ? l[l.length - 1].id + 1 : 1,
+          })
+        );
     } else {
-      dispatch(editProduct({ ...values, id: parseInt(editID) },parseInt(editID)));
+      dispatch(
+        editProduct({ ...values, id: parseInt(editID) }, parseInt(editID))
+      );
     }
     // print the form values to the console
     setSubmited(true);
